@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>견적서 만들기 | LPK모건스</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="app-head no-print">
+    <div><span class="brand">LPK모건스</span><h1>견적서 만들기</h1><p>내용만 입력해 주세요. 계산과 저장은 자동으로 해드려요.</p></div>
+    <div class="tools"><button id="csv" type="button">엑셀용 파일 저장</button><button id="print" class="primary" type="button">인쇄 · PDF</button></div>
+    <p id="save-status" class="save-status" role="status" aria-live="polite">저장 내용을 불러오는 중이에요.</p>
+  </header>
+
+  <main id="paper" class="paper">
+    <div class="document-head"><div><p class="company">LPK모건스</p><p class="business">서비스업 · 투자자문</p></div><h2>견적서</h2></div>
+    <div class="document-info">
+      <label>견적 번호<input id="number" data-field="number" maxlength="50" autocomplete="off"><span class="print-value" data-print="number"></span></label>
+      <label>견적 날짜<input id="date" data-field="date" type="date"><span class="print-value" data-print="date"></span></label>
+    </div>
+
+    <div class="parties">
+      <section class="party"><h3>받는 곳</h3><label>회사 · 성함<input id="recipient" data-field="recipient" maxlength="100" placeholder="김○○"><span class="print-value" data-print="recipient"></span></label><label>연락처<input id="recipientPhone" data-field="recipientPhone" type="tel" maxlength="50" placeholder="010-0000-0001"><span class="print-value" data-print="recipientPhone"></span></label><label>주소<input id="recipientAddress" data-field="recipientAddress" maxlength="200" placeholder="주소를 입력해 주세요"><span class="print-value" data-print="recipientAddress"></span></label></section>
+      <section class="party"><h3>보내는 곳</h3><label>회사 · 성함<input id="sender" data-field="sender" maxlength="100"><span class="print-value" data-print="sender"></span></label><label>연락처<input id="senderPhone" data-field="senderPhone" type="tel" maxlength="50"><span class="print-value" data-print="senderPhone"></span></label><label>주소<input id="senderAddress" data-field="senderAddress" maxlength="200" placeholder="주소를 입력해 주세요"><span class="print-value" data-print="senderAddress"></span></label></section>
+    </div>
+
+    <p class="intro">아래와 같이 견적을 보내드려요.</p>
+    <div class="items-heading"><h3>견적 품목</h3><span class="no-print">단가는 부가세 별도예요.</span></div>
+    <table class="items"><caption class="sr-only">품목별 수량과 단가를 입력하면 금액이 자동 계산됩니다.</caption><thead><tr><th scope="col">품목</th><th scope="col">수량</th><th scope="col">단가</th><th scope="col">금액</th><th scope="col" class="no-print"><span class="sr-only">품목 삭제</span></th></tr></thead><tbody id="rows"></tbody></table>
+    <button id="add" class="add no-print" type="button">＋ 품목 추가</button>
+    <p class="help no-print">수량은 1~9,999개, 단가는 0~999,999,999원까지 입력해 주세요.</p>
+
+    <div class="summary"><dl><div><dt>공급가액</dt><dd id="subtotal">0원</dd></div><div><dt>부가세 10%</dt><dd id="vat">0원</dd></div><div class="total"><dt>합계</dt><dd id="total">0원</dd></div></dl></div>
+    <section class="notes"><label for="notes">안내 말씀</label><textarea id="notes" data-field="notes" maxlength="1500" rows="3" placeholder="전하고 싶은 내용을 적어 주세요."></textarea><span class="print-value" data-print="notes"></span></section>
+    <footer class="document-footer"><strong>함께해 주셔서 감사합니다.</strong><span>LPK모건스</span></footer>
+  </main>
+  <p class="footnote no-print">내용은 지금 사용 중인 브라우저에 자동 저장돼요. 공용 컴퓨터에서는 개인정보 입력에 주의해 주세요.</p>
+</body>
+</html>

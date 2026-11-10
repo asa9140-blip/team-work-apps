@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>고객 문의 답장 도우미 | 매실한입</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <section class="settings" aria-labelledby="settings-title">
+      <div class="settings-heading"><h2 id="settings-title">⚙️ 설정</h2><span id="connection" class="connection" role="status" aria-live="polite">팀 코드를 저장해 주세요.</span></div>
+      <form id="settings-form"><label for="team">팀 코드</label><div class="settings-fields"><input id="team" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="안내받은 팀 코드를 입력해 주세요" maxlength="200"><button id="save-team" type="submit">저장 · 확인</button></div></form>
+      <p class="help">팀 코드는 이 브라우저에만 저장하고, 연결 확인과 답장 요청에만 사용해요.</p>
+    </section>
+
+    <header class="intro"><p class="brand">매실한입</p><h1>고객 문의<br class="mobile-break"> 답장 도우미</h1><p>매실·매실청·장아찌 문의를 붙여 넣어 주세요.<br>주문과 배송 문의에 짧고 정중하게 답장해 드려요.</p></header>
+
+    <div class="workspace">
+      <section class="card compose" aria-labelledby="question-title">
+        <div class="section-heading"><h2 id="question-title">어떤 문의가 왔나요?</h2><button id="example" class="subtle" type="button">예시 문의 넣기</button></div>
+        <label for="inquiry">고객 문의 내용</label><textarea id="inquiry" rows="9" maxlength="12000" placeholder="고객이 보내주신 문의를 여기에 붙여 넣어 주세요."></textarea>
+        <p class="help">주민등록번호, 계좌번호 등 민감한 정보는 빼고 입력해 주세요.</p>
+        <fieldset><legend>답장 말투를 골라 주세요</legend><div class="tone-options"><button type="button" class="tone selected" data-tone="정중하게" aria-pressed="true">정중하게</button><button type="button" class="tone" data-tone="사과 먼저" aria-pressed="false">사과 먼저</button></div></fieldset>
+        <button id="generate" class="primary generate" type="button">만들기</button>
+        <p id="progress" class="progress" role="status" aria-live="polite"></p>
+        <p id="error" class="error" role="alert" hidden></p>
+      </section>
+
+      <section class="card result-card" aria-labelledby="answer-title" aria-busy="false">
+        <div class="section-heading"><h2 id="answer-title">이렇게 답장해 보세요</h2><button id="copy" class="subtle" type="button" disabled>복사</button></div>
+        <label for="result">답장 초안</label><textarea id="result" rows="12" maxlength="50000" placeholder="만들어진 답장이 여기에 나타나요. 필요한 부분은 직접 고칠 수 있어요."></textarea>
+        <div class="metrics"><div><span>비용</span><strong id="cost">아직 없어요</strong></div><div><span>걸린 시간</span><strong id="duration">아직 없어요</strong></div></div>
+        <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+        <p class="help note">보내기 전에 내용을 꼭 확인해 주세요. 확인되지 않은 가격·날짜·약속은 넣지 않아요.</p>
+      </section>
+    </div>
+
+    <section class="card history-card" aria-labelledby="history-title"><div class="section-heading"><h2 id="history-title">최근 답장 기록</h2><span>최근 5개까지 보관해요</span></div><p id="history-empty" class="empty">답장을 만들면 여기에 차곡차곡 남겨드려요.</p><ol id="history"></ol></section>
+    <p id="storage-warning" class="error" role="status" hidden></p>
+    <footer><strong>광양의 맛을 전하는 매실한입</strong><p>입력 내용과 답장은 지금 브라우저에 자동 저장돼요.<br>답장을 만들 때는 문의 내용을 답장 작성 서비스로 보내요.</p></footer>
+  </main>
+</body>
+</html>
